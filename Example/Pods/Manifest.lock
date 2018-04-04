@@ -1,0 +1,16 @@
+PODS:
+  - YCPinYin (0.2)
+
+DEPENDENCIES:
+  - YCPinYin (from `../`)
+
+EXTERNAL SOURCES:
+  YCPinYin:
+    :path: ../
+
+SPEC CHECKSUMS:
+  YCPinYin: 864b257f0319eaab6c88ff0f5f648dc1b2e0c723
+
+PODFILE CHECKSUM: 496e7403559550dc0ac868eaab11209c2fb3124a
+
+COCOAPODS: 1.4.0

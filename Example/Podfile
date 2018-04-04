@@ -1,0 +1,5 @@
+use_frameworks!
+
+target 'YCPinYin_Example' do
+  pod 'YCPinYin', :path => '../'
+end
