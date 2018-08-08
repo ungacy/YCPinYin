@@ -216,7 +216,7 @@ static inline NSString *convertPolyphoneArrayToString(NSArray *polyphoneArray) {
         separator = kYCPinYinDefaultSeparator;
     }
     [YCPinYin sharedInstance].separator = separator;
-    NSString *key = [self stringByAppendingFormat:@"%zd%@", [YCPinYin sharedInstance].format, [YCPinYin sharedInstance].separator];
+    NSString *key = [self stringByAppendingFormat:@"%zd%@", (unsigned long)[YCPinYin sharedInstance].format, [YCPinYin sharedInstance].separator];
     NSString *result = (NSString *)[[YCPinYin sharedInstance].queryCache objectForKey:key];
     if (result) {
         return result;
@@ -229,7 +229,6 @@ static inline NSString *convertPolyphoneArrayToString(NSArray *polyphoneArray) {
 }
 
 - (NSArray *)yc_matchToWord:(NSString *)word {
-    NSMutableDictionary *matchDict = [NSMutableDictionary dictionary];
     BOOL isChinese = NO;
     if (word.length > 0) {
         unichar character = [word characterAtIndex:0];
