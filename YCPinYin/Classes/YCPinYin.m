@@ -228,4 +228,38 @@ static inline NSString *convertPolyphoneArrayToString(NSArray *polyphoneArray) {
     return result;
 }
 
+- (NSArray *)yc_matchToWord:(NSString *)word {
+    NSMutableDictionary *matchDict = [NSMutableDictionary dictionary];
+    BOOL isChinese = NO;
+    if (word.length > 0) {
+        unichar character = [word characterAtIndex:0];
+        if (character > 0x4e00 && character < 0x9fff) {
+            isChinese = YES;
+        }
+    }
+    NSMutableArray *found = [NSMutableArray array];
+    if (isChinese) {
+        NSRange range = NSMakeRange(0, 0);
+        while (range.location != NSNotFound) {
+            range = [self rangeOfString:word options:NSCaseInsensitiveSearch range:NSMakeRange(NSMaxRange(range), self.length - NSMaxRange(range))];
+            if (range.length != NSNotFound) {
+                [found addObject:[NSValue valueWithRange:range]];
+            }
+        }
+        return found;
+    } else {
+        NSArray *pinyinArray = [[self yc_toPinYinWithFormat:YCPinYinOutoutFormatFirstLetter] componentsSeparatedByString:@"#"];
+        for (NSString *firstLetterPinyin in pinyinArray) {
+            NSRange range = NSMakeRange(0, 0);
+            while (range.location != NSNotFound) {
+                range = [firstLetterPinyin rangeOfString:word options:NSCaseInsensitiveSearch range:NSMakeRange(NSMaxRange(range), self.length - NSMaxRange(range))];
+                if (range.length != NSNotFound) {
+                    [found addObject:[NSValue valueWithRange:range]];
+                }
+            }
+        }
+    }
+    return found;
+}
+
 @end

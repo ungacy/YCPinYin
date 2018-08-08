@@ -58,5 +58,7 @@ typedef NS_OPTIONS(NSUInteger, YCPinYinOutoutFormat) {
  */
 - (NSString *)yc_toPinYinWithFormat:(YCPinYinOutoutFormat)format separator:(NSString *)separator;
 
+- (NSArray *)yc_matchToWord:(NSString *)word;
+
 @end
 
