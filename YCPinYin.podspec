@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YCPinYin'
-  s.version          = '0.2.2'
+  s.version          = '0.2.3'
   s.summary          = 'PinYin of chinese inspired by PinYin4Objc.'
 
   s.description      = <<-DESC
