@@ -99,6 +99,12 @@ NSString *pinyin = [string yc_toPinYin];//nh#nihao
 NSParameterAssert([pinyin isEqualToString:@"nh#nihao"]);
 ```
 
+### 多音字
+
+```
+`单贝` => `db#cb#sb#danbei#chanbei#shanbei` or `db#cb#sb` or `danbei#chanbei#shanbei`
+```
+
 ### 声调
 
 感觉用处不多,见demo
